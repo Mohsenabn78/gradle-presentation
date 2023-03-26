@@ -29,22 +29,16 @@ tasks.getByName<Test>("test") {
 /** custom script tasks **/
 
 task("printHello1") {
-    doFirst {
-        println("hello")
-    }
-
-    doLast {
-        println("from task 1")
-    }
+    println("hello from task1 in configuration phase")
 }
 
-task("printHello2") {
+tasks.register("printHello2") {
     doFirst {
         println("hello")
     }
 
     doLast {
-        println("from from 2")
+        println("from task2 in execution phase")
     }
 
     dependsOn("printHello1")
@@ -101,6 +95,9 @@ task("sendEmail", EmailManagerTask::class) {
     text = "hi, this message sent from gradle EmailManagerTask at ${convTime.hours}:${convTime.minutes}"
 }
 
-task("findJPGExtension",ExtensionFilterTask::class){
-
-}
+tasks.register(
+    "findJPGExtension",
+    ExtensionFilterTask::class,
+    layout.projectDirectory.dir("/src/main/resources/drawable").toString(),
+    true
+)

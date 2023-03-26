@@ -12,8 +12,10 @@ open class EmailManagerTask : DefaultTask() {
     private val emailFrom = "mohsenabedini79ooo@gmail.com"
     private val emailTo = "mohsen.private.box@gmail.com"
     private val emailCC = "mohsen.private.box@gmail.com"
-    @Input var subject: String? = null
-    @Input var text: String? = null
+    @Input
+    var subject: String? = null
+    @Input
+    var text: String? = null
 
 
     @TaskAction

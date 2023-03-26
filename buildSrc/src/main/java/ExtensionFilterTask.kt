@@ -1,24 +1,24 @@
 import org.gradle.api.DefaultTask
+import org.gradle.api.GradleException
 import org.gradle.api.tasks.TaskAction
 import java.io.File
+import javax.inject.Inject
 
-open class ExtensionFilterTask : DefaultTask() {
+open class ExtensionFilterTask @Inject constructor(
+    private val resDir: String,
+    taskEnabled: Boolean
+) : DefaultTask() {
+
+    init {
+        enabled = taskEnabled
+    }
 
     @TaskAction
-    fun findJPGExtension(){
-        val resDir = project.projectDir.path + "/src/main/resources/drawable"
+    fun findJPGExtension() {
         val file = File(resDir)
         file.list()?.forEach { fileName ->
             if (fileName.contains(".JPG")) {
-
-                logger.error(fileName,Throwable("Oh"))
-
-//                project.tasks.getByName("sendEmail") {
-//                    (it as EmailManagerTask).apply {
-//                        subject = "Gradle Custom Task"
-//                        text = "Oh No I Find Out A JPG Fie With Name $fileName At $resDir"
-//                    }
-//                }
+                logger.error("Invalid Extension")
             }
         }
     }
