@@ -18,7 +18,7 @@ open class ExtensionFilterTask @Inject constructor(
         val file = File(resDir)
         file.list()?.forEach { fileName ->
             if (fileName.contains(".JPG")) {
-                logger.error("Invalid Extension")
+                throw GradleException("Invalid Extension")
             }
         }
     }

@@ -1,4 +1,5 @@
 import org.gradle.kotlin.dsl.support.serviceOf
+import plugin.SimpleProjectPlugin
 import java.util.Date
 
 plugins {
@@ -6,6 +7,8 @@ plugins {
     groovy
     java
 }
+
+apply<SimpleProjectPlugin>()
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
@@ -55,7 +58,6 @@ task("printAllTask") {
     }
 }
 
-
 task("createLogFile") {
     doLast {
         val targetDir = layout.projectDirectory.dir("/generate").toString()
@@ -95,9 +97,23 @@ task("sendEmail", EmailManagerTask::class) {
     text = "hi, this message sent from gradle EmailManagerTask at ${convTime.hours}:${convTime.minutes}"
 }
 
-tasks.register(
+tasks.whenTaskAdded {
+    if (this.name == "findJPGExtension") {
+        this.finalizedBy("sendEmailAfterInvalidExt")
+    }
+}
+
+val jpgExtTask by tasks.register(
     "findJPGExtension",
     ExtensionFilterTask::class,
     layout.projectDirectory.dir("/src/main/resources/drawable").toString(),
     true
 )
+
+task("sendEmailAfterInvalidExt", EmailManagerTask::class) {
+    subject = "Gradle Custom Task"
+    text = "OOPS! i found an invalid extension format in drawable path"
+    onlyIf {
+        jpgExtTask.state.failure is Throwable
+    }
+}
