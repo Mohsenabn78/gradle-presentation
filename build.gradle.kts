@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    implementation(gradleApi())
     implementation(kotlin("stdlib"))
     implementation("org.codehaus.groovy:groovy-all:3.0.5")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")

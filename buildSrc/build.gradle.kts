@@ -1,3 +1,4 @@
+
 plugins {
     kotlin("jvm") version "1.5.10"
     groovy
@@ -13,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    implementation(gradleApi())
     implementation(kotlin("stdlib"))
     implementation("org.codehaus.groovy:groovy-all:3.0.5")
 
