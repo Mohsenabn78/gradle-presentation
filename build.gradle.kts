@@ -1,5 +1,4 @@
 import org.gradle.kotlin.dsl.support.serviceOf
-import plugin.SimpleProjectPlugin
 import java.util.Date
 
 plugins {
@@ -8,7 +7,10 @@ plugins {
     java
 }
 
-apply<SimpleProjectPlugin>()
+//apply<SimpleProjectPlugin>()
+//apply<plugin.FileManagerPlugin>()
+apply<plugin.CommandLinePlugin>()
+
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
@@ -62,7 +64,7 @@ task("printAllTask") {
 task("createLogFile") {
     doLast {
         val targetDir = layout.projectDirectory.dir("/generate").toString()
-        file(targetDir).mkdirs()
+        File(targetDir).mkdirs()
         File(targetDir, "log.html").writeText("version = 1.0.0")
     }
 }

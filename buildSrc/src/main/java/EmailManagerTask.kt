@@ -8,7 +8,7 @@ import javax.mail.internet.*
 open class EmailManagerTask : DefaultTask() {
 
     private val userName = "mohsenabedini79ooo@gmail.com"
-    private val password = "0372014607oo"
+    private val password = ""
     private val emailFrom = "mohsenabedini79ooo@gmail.com"
     private val emailTo = "mohsen.private.box@gmail.com"
     private val emailCC = "mohsen.private.box@gmail.com"
