@@ -1,2 +1,2 @@
-rootProject.name = "GradleCustomTask"
+rootProject.name = "gradleCustomTask"
 

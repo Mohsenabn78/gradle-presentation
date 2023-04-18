@@ -5,15 +5,36 @@ plugins {
     kotlin("jvm") version "1.5.10"
     groovy
     java
+    `java-gradle-plugin`
+    `maven-publish`
 }
 
-//apply<SimpleProjectPlugin>()
 //apply<plugin.FileManagerPlugin>()
-apply<plugin.CommandLinePlugin>()
+//apply<plugin.CommandLinePlugin>()
+//apply<plugin.KGitPlugin>()
 
 
-group = "org.example"
+group = "com.mohsen"
 version = "1.0-SNAPSHOT"
+
+publishing {
+    repositories {
+        maven {
+            url = uri("$buildDir/repo")
+        }
+    }
+}
+
+
+gradlePlugin {
+    plugins {
+        create("simplePlugin") {
+            id = "com.mohsen.plugin"
+            implementationClass = "SimpleProjectPlugin"
+        }
+    }
+}
+
 
 repositories {
     mavenCentral()

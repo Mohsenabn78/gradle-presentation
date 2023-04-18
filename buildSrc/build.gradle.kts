@@ -14,7 +14,6 @@ repositories {
 }
 
 dependencies {
-    implementation(gradleApi())
     implementation(kotlin("stdlib"))
     implementation("org.codehaus.groovy:groovy-all:3.0.5")
 
@@ -25,4 +24,7 @@ dependencies {
     // sun mail
     implementation("com.sun.mail:android-mail:1.6.0")
     implementation("com.sun.mail:android-activation:1.6.0")
+
+    //JGit
+    //implementation("org.eclipse.jgit:org.eclipse.jgit:5.4.2.202011171130-r")
 }

@@ -1,10 +1,8 @@
-package plugin
-
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
 
-class SimpleProjectPlugin : Plugin<Project> {
+open class SimpleProjectPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
         target.task("sayHelloFromPlugin") {
