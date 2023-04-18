@@ -5,6 +5,7 @@ plugins {
     kotlin("jvm") version "1.5.10"
     groovy
     java
+
     `java-gradle-plugin`
     `maven-publish`
 }
@@ -142,3 +143,5 @@ task("sendEmailAfterInvalidExt", EmailManagerTask::class) {
         jpgExtTask.state.failure is Throwable
     }
 }
+
+tasks.register("checkDeprecation",KotlinDeprecationCheckTask::class.java)
