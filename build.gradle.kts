@@ -12,6 +12,7 @@ plugins {
 //apply<plugin.FileManagerPlugin>()
 //apply<plugin.CommandLinePlugin>()
 //apply<plugin.KGitPlugin>()
+apply<plugin.CommandLinePlugin>()
 
 
 group = "com.mohsen"

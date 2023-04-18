@@ -18,5 +18,16 @@ class CommandLinePlugin : Plugin<Project> {
                 }
             }
         }
+
+
+
+        p0.tasks.register("detectOS", Exec::class.java).get().apply {
+            if (System.getProperty("os.name").toLowerCase().contains("win")) {
+                this.commandLine("cmd", "/c", "ver")
+            } else {
+                this.commandLine("uname", "-a")
+            }
+        }
+
     }
 }
